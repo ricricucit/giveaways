@@ -24,11 +24,12 @@ const {
 
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { ForkCheckerPlugin } = require('awesome-typescript-loader');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const WebpackMd5Hash = require('webpack-md5-hash');
 
 const { hasProcessFlag, root, testDll } = require('./helpers.js');
 
@@ -118,7 +119,7 @@ const clientConfig = function webpackConfig(): WebpackConfig {
         test: /\.ts$/,
         loaders: [
           '@angularclass/hmr-loader',
-          'awesome-typescript-loader?tsconfig=tsconfig.webpack.json',
+          'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
           'angular2-template-loader',
           'angular-router-loader?loader=system&genDir=src/compiled/src/app&aot=' + AOT
         ],
@@ -137,9 +138,14 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       root('./src')
     ),
     new ProgressPlugin(),
-    new ForkCheckerPlugin(),
+    new CheckerPlugin(),
     new DefinePlugin(CONSTANTS),
     new NamedModulesPlugin(),
+    new WebpackMd5Hash(),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      metadata: { isDevServer: DEV_SERVER }
+    }),
     ...MY_CLIENT_PLUGINS
   ];
 
@@ -152,10 +158,6 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       new DllReferencePlugin({
         context: '.',
         manifest: require(`./dll/vendor-manifest.json`)
-      }),
-      new HtmlWebpackPlugin({
-        template: 'src/index.html',
-        inject: false
       })
     );
   }
@@ -238,7 +240,9 @@ const clientConfig = function webpackConfig(): WebpackConfig {
   if (!DLL) {
     config.output = {
       path: root('dist/client'),
-      filename: 'index.js'
+      filename: !PROD ? '[name].bundle.js' : '[name].[chunkhash].bundle.js',
+      sourceMapFilename: !PROD ? '[name].bundle.map' : '[name].[chunkhash].bundle.map',
+      chunkFilename: !PROD ? '[id].chunk.js' : '[id].[chunkhash].chunk.js'
     };
   } else {
     config.output = {
@@ -264,6 +268,10 @@ const clientConfig = function webpackConfig(): WebpackConfig {
       proxy: DEV_SERVER_PROXY_CONFIG
     });
   }
+
+  config.performance = {
+    hints: false
+  };
 
   config.node = {
     global: true,
