@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+
+import { MdSnackBar } from '@angular/material';
 
 import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
@@ -28,12 +30,14 @@ export class DashboardComponent implements OnDestroy, OnInit {
     fb: FormBuilder,
     private store: Store<AppState>,
     private userActions: UserActions,
+    public snackBar: MdSnackBar
   ) {
+
     this.form = fb.group({
-      name: '',
-      surname: '',
-      email: '',
-      password: '',
+      name: ['',  Validators.required],
+      surname:  ['', Validators.required],
+      email: ['', Validators.required],
+      password:  ['', Validators.required],
       image: ''
     });
     this.user$ = this.store.select(state => state.user.user);
@@ -62,9 +66,13 @@ export class DashboardComponent implements OnDestroy, OnInit {
   }
 
   submitState() {
-    this.store.dispatch(this.userActions.editUser(
+    if(!this.form.valid){
+      let config = {duration: 3500};
+      this.snackBar.open('Some info is missing...', 'OK', config);
+    }
+    /*this.store.dispatch(this.userActions.editUser(
       Object.assign({}, this.user, { name: this.form.get('name').value }
-      )));
+      )));*/
   }
 
   ngOnDestroy() {
