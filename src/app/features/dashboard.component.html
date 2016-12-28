@@ -1,10 +1,29 @@
 <header>
   <h3> Welcome to the Dashboard {{user.name}}!</h3>
+  <ul>
+  	<li>dashboard (if logged in) showing
+  		<ul>
+  			<li>menu</li>
+  			<li>edit/view rewrd(s)</li>
+  		</ul>
+  	</li>
+  	<li>explanation single page when not logged in, showing
+  		<ul>
+  			<li>menu</li>
+  			<li>login/register</li>
+  		</ul>
+  	</li>
+  </ul>
 </header>
 <section>
   <form [formGroup]="form" (ngSubmit)="submitState()" autocomplete="off">
     <md-input formControlName="name" [placeholder]="nameLabel"></md-input><br>
-    <button md-raised-button color="primary">Update store</button>
+    <md-input formControlName="surname" [placeholder]="surnameLabel"></md-input><br>
+    <md-input formControlName="email" [placeholder]="emailLabel"></md-input><br>
+    <md-input formControlName="password" [placeholder]="passwordLabel" type="password"></md-input><br>
+    <!-- missing file upload -->
+
+    <button md-raised-button color="primary">Register (Update Store)</button>
     <button md-raised-button color="accent" type="button" (click)="clearName()">Clear name</button>
   </form>
   <br><br>

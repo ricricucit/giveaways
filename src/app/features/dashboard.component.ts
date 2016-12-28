@@ -18,6 +18,10 @@ export class DashboardComponent implements OnDestroy, OnInit {
   destroyed$: Subject<any> = new Subject<any>();
   form: FormGroup;
   nameLabel = 'Enter your name';
+  surnameLabel = 'Enter your surname';
+  emailLabel = 'Enter your e-mail';
+  passwordLabel = 'Enter your Password';
+  imageLabel = 'Upload a photo of Yourself';
   user: User;
   user$: Observable<User>;
   constructor(
@@ -26,7 +30,11 @@ export class DashboardComponent implements OnDestroy, OnInit {
     private userActions: UserActions,
   ) {
     this.form = fb.group({
-      name: ''
+      name: '',
+      surname: '',
+      email: '',
+      password: '',
+      image: ''
     });
     this.user$ = this.store.select(state => state.user.user);
     this.user$.takeUntil(this.destroyed$)
@@ -35,6 +43,10 @@ export class DashboardComponent implements OnDestroy, OnInit {
 
   ngOnInit() {
     this.form.get('name').setValue(this.user.name);
+    this.form.get('surname').setValue(this.user.surname);
+    this.form.get('email').setValue(this.user.email);
+    this.form.get('password').setValue(this.user.password);
+    this.form.get('image').setValue(this.user.image);
   }
 
   clearName() {
