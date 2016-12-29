@@ -67,12 +67,23 @@ export class DashboardComponent implements OnDestroy, OnInit {
 
   submitState() {
     if(!this.form.valid){
+      //show snackBar to alert user about errors
       let config = {duration: 3500};
       this.snackBar.open('Some info is missing...', 'OK', config);
+    }else{
+      //no ID means that the user is new, so we create it
+      if(this.user.id === 0){
+        alert('create user!');
+        this.store.dispatch(this.userActions.registerUser(
+          Object.assign({}, this.user, { name: this.form.get('name').value }
+        )));
+      //user w/ ID means the user exists, so we modify it
+      }else{
+        this.store.dispatch(this.userActions.editUser(
+          Object.assign({}, this.user, { name: this.form.get('name').value }
+        )));
+      }
     }
-    /*this.store.dispatch(this.userActions.editUser(
-      Object.assign({}, this.user, { name: this.form.get('name').value }
-      )));*/
   }
 
   ngOnDestroy() {

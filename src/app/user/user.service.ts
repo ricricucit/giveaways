@@ -15,4 +15,9 @@ export class UserService extends RequestBase {
     return this.http.get(`${API_BASE_URL}/logout`, this.optionsNoPre)
       .map(res => res.text());
   }
+
+  register(): Observable<string> {
+    //here API call to register users
+    return;
+  }
 }
