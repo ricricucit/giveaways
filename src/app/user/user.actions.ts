@@ -9,6 +9,34 @@ import { User } from './user.model';
 
 export class UserActions {
 
+  /* --------------------------------------- REGISTER */
+  static REGISTER_USER = '[User] Register User';
+  registerUser(user: User): Action {
+    return {
+      type: UserActions.REGISTER_USER,
+      payload: user
+    };
+  }
+
+  static REGISTER_FAIL = '[User] Register Fail';
+  registerUserFail(err: Error): Action {
+    return {
+      type: UserActions.REGISTER_FAIL,
+      payload: err
+    };
+  }
+
+  static REGISTER_SUCCESS = '[User] Register Success';
+  registerUserSuccess(res: Response): Action {
+    return {
+      type: UserActions.REGISTER_SUCCESS,
+      payload: res
+    };
+  }
+  /* --------------------------------------- end REGISTER */
+
+
+  /* --------------------------------------- EDIT */
   static EDIT_USER = '[User] Edit User';
   editUser(user: User): Action {
     return {
@@ -17,6 +45,25 @@ export class UserActions {
     };
   }
 
+  static EDIT_USER_SUCCESS = '[User] Edit User Success';
+  editUserSuccess(user: User): Action {
+    return {
+      type: UserActions.EDIT_USER_SUCCESS,
+      payload: user
+    };
+  }
+
+  static EDIT_USER_FAIL = '[User] Edit User Fail';
+  editUserFail(user: User): Action {
+    return {
+      type: UserActions.EDIT_USER_FAIL,
+      payload: user
+    };
+  }
+
+  /* --------------------------------------- end EDIT */
+
+  /* --------------------------------------- LOG OUT */
   static LOGOUT = '[User] Logout';
   logout(): Action {
     return {
@@ -39,4 +86,5 @@ export class UserActions {
       payload: res
     };
   }
+  /* --------------------------------------- end LOG OUT */
 }
