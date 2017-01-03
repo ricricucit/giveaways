@@ -5,18 +5,18 @@ import { Observable } from 'rxjs/Observable';
 
 import { MdSnackBar } from '@angular/material';
 
-import { AppState } from '../reducers';
+import { AppState } from '../../reducers';
 import { Store } from '@ngrx/store';
-import { UserActions } from '../user/user.actions';
-import { User } from '../user/user.model';
+import { UserActions } from '../../user/user.actions';
+import { User } from '../../user/user.model';
 
 @Component({
-  selector: 'my-dashboard',
-  templateUrl: './dashboard.component.html',
+  selector: 'signup',
+  templateUrl: './signup.component.html',
   styles: [`#my-logout-button { background: #F44336 }`]
 })
 
-export class DashboardComponent implements OnDestroy, OnInit {
+export class SignupComponent implements OnDestroy, OnInit {
   destroyed$: Subject<any> = new Subject<any>();
   form: FormGroup;
   nameLabel = 'Enter your name';
