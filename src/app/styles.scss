@@ -12,23 +12,41 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$primary: md-palette($md-blue);
-$accent:  md-palette($md-pink, A200, A100, A400);
+$primary: md-palette($md-cyan);
+$accent:  md-palette($md-blue, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$warn:    md-palette($md-red);
+$warn:    md-palette($md-orange);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$theme: md-light-theme($primary, $accent, $warn);
+$theme: md-dark-theme($primary, $accent, $warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($theme);
 
-@media only screen and (min-width: 800px) {
+@include mq($until: mobile) {
   md-sidenav.md-sidenav-opened, md-sidenav.md-sidenav-opening {
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.08),0px 1px 1px 0px rgba(0, 0, 0, 0.07),0px 1px 3px 0px rgba(0, 0, 0, 0.14) !important;
+  }
+}
+
+@include mq($from: mobile) {
+  md-sidenav, 
+  md-sidenav.md-locked-open, 
+  md-sidenav.md-closed.md-locked-open-add-active {
+    min-width: 414px !important;
+    width: 75vw !important;
+    max-width: 1440px !important;
+  }
+}
+
+@include mq($until: mobile) {
+  md-sidenav, 
+  md-sidenav.md-locked-open, 
+  md-sidenav.md-closed.md-locked-open-add-active {
+    width: 85vw !important;
   }
 }
 
