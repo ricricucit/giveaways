@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { views } from './app-nav-views';
 import { MOBILE } from './services/constants';
 
 @Component({
@@ -15,7 +14,6 @@ export class AppComponent {
   );
   mobile = MOBILE;
   sideNavMode = MOBILE ? 'over' : 'side';
-  views = views;
 
   constructor(
     public route: ActivatedRoute,
