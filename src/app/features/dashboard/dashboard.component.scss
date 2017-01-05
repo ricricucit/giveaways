@@ -83,6 +83,9 @@
             white-space: nowrap;
 
             .main-cols--right__rwrd-list__item{
+                .example-header-image{
+                    background: url(https://placeholdit.imgix.net/~text?txtsize=5&txt=5x5&w=50&h=50) center center;
+                }
                 background: white;
                 margin-left: 1em; margin-right: 1em; 
                 &:first-child{ margin-left: 0; } 

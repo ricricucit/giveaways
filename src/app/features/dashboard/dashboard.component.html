@@ -32,20 +32,31 @@
             <h5 class="main-cols--right__message">Enrico, here’s the list of available Gifts:</h5>
         </div>
         <div fxFlexOffset="10" fxFlexOffset.sm="0" fxFlexOffset.xs="0" fxFlex="80">
+            
             <div class="main-cols--right__rwrd-list">
-                <md-card class="main-cols--right__rwrd-list__item">
-                    ciao
+                
+                <md-card class="md-light-theme" *ngFor="let item of [0,1,2,3,4,5]" class="main-cols--right__rwrd-list__item">
+                    <img md-card-image src="https://placeholdit.imgix.net/~text?txtsize=33&txt=1200%C3%97500&w=1200&h=500">
+                    <md-card-header>
+                        <div md-card-avatar class="example-header-image"></div>
+                        <md-card-title>Shiba Inu</md-card-title>
+                        <md-card-subtitle>Dog Breed</md-card-subtitle>
+                    </md-card-header>
+                    <md-card-content>
+                        <p>
+                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                        bred for hunting.
+                        </p>
+                    </md-card-content>
+                    <md-card-actions>
+                        <button md-button>LIKE</button>
+                        <button md-button>SHARE</button>
+                    </md-card-actions>
                 </md-card>
-                <md-card class="main-cols--right__rwrd-list__item">
-                    ciao
-                </md-card>
-                <md-card class="main-cols--right__rwrd-list__item">
-                    ciao
-                </md-card>
-                <md-card class="main-cols--right__rwrd-list__item">
-                    ciao
-                </md-card>
+
             </div>
+
         </div>
     </div>
 </div>
