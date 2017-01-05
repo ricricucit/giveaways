@@ -61,16 +61,21 @@
 
             .main-cols--right__rwrd-list__item{
                 background: white;
-                margin-left: 2em; margin-right: 2em; 
+                margin-left: 1em; margin-right: 1em; 
                 &:first-child{ margin-left: 0; } 
                 &:last-child{ 
-                    margin-right: 4vw; //33vw/2
+                    margin-right: 0; //33vw/2
                     @include mq($until: desktablet) {
                         margin-right: 0; 
                     }
                 }
                 width: 33vw; min-width: 320px; max-width: 450px;
-                height: 65vh; min-height: 414px; max-height: 680px;
+                height: 70vh; min-height: 414px; max-height: 768px;
+                @include mq($until: desktablet) {
+                    margin-left: .6em; margin-right: .6em; 
+                    width: 30vw; min-width: 320px; max-width: 414px;
+                    height: 40vh; min-height: 480px; max-height: 768px;
+                }
                 display: inline-block;
                 
             }
