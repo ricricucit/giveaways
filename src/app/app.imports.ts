@@ -13,6 +13,8 @@ import { rootReducer } from './reducers';
 import { StoreDevToolsModule } from './features/store-devtools.module';
 import { UserEffects } from './user/user.effects';
 
+import {FlexLayoutModule} from "@angular/flex-layout";
+
 const STORE_DEV_TOOLS_IMPORTS = [];
 if (ENV === 'development' && !AOT &&
   ['monitor', 'both'].includes(STORE_DEV_TOOLS) // set in constants.js file in project root
@@ -33,6 +35,7 @@ export const APP_IMPORTS = [
   RouterStoreModule.connectRouter(),
   StoreModule.provideStore(rootReducer),
   STORE_DEV_TOOLS_IMPORTS,
-  StoreDevToolsModule
+  StoreDevToolsModule,
+  FlexLayoutModule.forRoot()
 ];
 
