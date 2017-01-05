@@ -1,18 +1,51 @@
-<header>
-  <h3> Welcome to the Dashboard {{user.name}}!</h3>
-  <ul>
-  	<li>dashboard (if logged in) showing
-  		<ul>
-  			<li>menu</li>
-  			<li>edit/view rewrd(s)</li>
-  		</ul>
-  	</li>
-  	<li>explanation single page when not logged in, showing
-  		<ul>
-  			<li>menu</li>
-  			<li>login/register</li>
-  		</ul>
-  	</li>
-  </ul>
-</header>
-<signup></signup>
+<div fxLayout="column">
+    <img width="100" class="main-img" src="https://placeholdit.imgix.net/~text?txtsize=20&txt=LOGO%20100%C3%97100&w=100&h=100"/>
+</div>
+<div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+    <div class="main-cols main-cols--left">
+        <div fxFlexOffset="20" fxFlexOffset.sm="0" fxFlexOffset.xs="0">
+            <h6 class="main-cols--left__time">3 days 24 minutes and 46 seconds left.</h6>
+        </div>
+        
+        <div fxFlexOffset="10" fxFlexOffset.sm="0" fxFlexOffset.xs="0" fxFlex="80">
+            <h1 class="main-cols--left__title">This is the title of the rewrd and it's long, containing stuff!</h1>
+        </div>
+        
+        <div fxFlexOffset="20" fxFlexOffset.sm="0" fxFlexOffset.xs="0" fxFlex="60">
+            <p class="main-cols--left__paragraph">
+                Meowing non stop for food eat owner's food, or loves cheeseburgers. Find something else more interesting knock over christmas tree all of a sudden cat goes crazy meow for food, then when human fills food dish, take a few bites of food and continue meowing yet have secret plans step on your keyboard while you're gaming and then turn in a circle. Human is washing you why halp oh the horror flee scratch hiss bite sniff other cat's butt and hang jaw half open.
+            </p>
+
+            <p class="main-cols--left__link">
+                <a href="http://www.example.com"> http://www.example.com</a>
+            </p>
+
+            <p class="main-cols--left__img-container">
+                Offered by<br/>
+                <a href="http://www.example.com">Digital Nomad Survey</a><br/>
+                <img width="60" src="https://placeholdit.imgix.net/~text?txtsize=14&txt=LOGO%2060%C3%9760&w=60&h=60"/>
+            </p>
+        </div>
+    </div>
+    <div class="main-cols main-cols--right">
+        <div fxFlexOffset="10" fxFlexOffset.sm="0" fxFlexOffset.xs="0">
+            <h6 class="main-cols--right__message">Enrico, here’s the list of available Gifts:</h6>
+        </div>
+        <div fxFlexOffset="10" fxFlexOffset.sm="0" fxFlexOffset.xs="0" fxFlex="80">
+            <div class="main-cols--right__rwrd-list">
+                <md-card class="main-cols--right__rwrd-list__item">
+                    ciao
+                </md-card>
+                <md-card class="main-cols--right__rwrd-list__item">
+                    ciao
+                </md-card>
+                <md-card class="main-cols--right__rwrd-list__item">
+                    ciao
+                </md-card>
+                <md-card class="main-cols--right__rwrd-list__item">
+                    ciao
+                </md-card>
+            </div>
+        </div>
+    </div>
+</div>

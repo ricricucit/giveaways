@@ -13,7 +13,6 @@ export class AppComponent {
     ['monitor', 'both'].includes(STORE_DEV_TOOLS) // set in constants.js file in project root
   );
   mobile = MOBILE;
-  sideNavMode = MOBILE ? 'over' : 'side';
 
   constructor(
     public route: ActivatedRoute,

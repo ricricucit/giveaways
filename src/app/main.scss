@@ -2,7 +2,9 @@
 /* This file is for setting global styles  */
 @import 'variables';
 
-
+md-card{
+    overflow: hidden;
+}
 .rwd-list{
     margin:0;
     padding:0;

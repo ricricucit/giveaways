@@ -1,6 +1,5 @@
-
 <md-sidenav-layout fullscreen>
-  <md-sidenav #sidenav [mode]="sideNavMode">
+  <md-sidenav #sidenav mode="push">
     <div fxLayout="row">
       <div fxFlex="30">
         <ul class="menu">
@@ -61,13 +60,13 @@
       </div>
     </div>
   </md-sidenav>
-  <md-toolbar color="primary">
-    <button md-icon-button (click)="sidenav.toggle()">
-      <md-icon>menu</md-icon>
-    </button>rewrd.net
-  </md-toolbar>
-<md-card id="my-page-card">
-  <router-outlet (activate)="activateEvent($event)" (deactivate)="deactivateEvent($event)"></router-outlet>
-</md-card>
+  
+  <a class="main-logo" (click)="sidenav.toggle()">
+      rewrd.net
+  </a>
+
+  <md-card class="page-card">
+    <router-outlet (activate)="activateEvent($event)" (deactivate)="deactivateEvent($event)"></router-outlet>
+  </md-card>
 </md-sidenav-layout>
 <!-- <my-store-devtools *ngIf="showMonitor"></my-store-devtools> -->

@@ -26,13 +26,13 @@ $theme: md-dark-theme($primary, $accent, $warn);
 // that you are using.
 @include angular-material-theme($theme);
 
-@include mq($until: mobile) {
+@include mq($until: mobilablet) {
   md-sidenav.md-sidenav-opened, md-sidenav.md-sidenav-opening {
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.08),0px 1px 1px 0px rgba(0, 0, 0, 0.07),0px 1px 3px 0px rgba(0, 0, 0, 0.14) !important;
   }
 }
 
-@include mq($from: mobile) {
+@include mq($from: mobilablet) {
   md-sidenav, 
   md-sidenav.md-locked-open, 
   md-sidenav.md-closed.md-locked-open-add-active {
@@ -42,11 +42,11 @@ $theme: md-dark-theme($primary, $accent, $warn);
   }
 }
 
-@include mq($until: mobile) {
+@include mq($until: mobilablet) {
   md-sidenav, 
   md-sidenav.md-locked-open, 
   md-sidenav.md-closed.md-locked-open-add-active {
-    width: 85vw !important;
+    width: 100vw !important;
   }
 }
 

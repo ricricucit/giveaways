@@ -13,7 +13,7 @@ import { User } from '../../user/user.model';
 @Component({
   selector: 'my-dashboard',
   templateUrl: './dashboard.component.html',
-  styles: [`#my-logout-button { background: #F44336 }`]
+  styleUrls: ['./dashboard.component.css']
 })
 
 export class DashboardComponent implements OnDestroy, OnInit {
