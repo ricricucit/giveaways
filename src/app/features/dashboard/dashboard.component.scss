@@ -1,5 +1,20 @@
 @import '../../variables';
 
+@mixin paragraphs-link(){
+  a{
+      font-weight: 600;
+      display: inline-block;
+      color: black;
+      line-height: 1.2em;
+      border-bottom: 1px solid black;
+      transition: all .2s ease-in-out;
+      &:hover{
+          color: rebeccapurple;
+          border-bottom: 1px solid rebeccapurple;
+      }
+  }
+}
+
 .main-cols{
     height: 100vh;
 
@@ -31,18 +46,26 @@
             color: black;
         }
         .main-cols--left__paragraph{
-            font-weight: 600;
+            font-size: 1em;
             color: rgba(74,74,74,1);
-            a{ color: black; }
+            @include paragraphs-link();
         }
 
         .main-cols--left__link{
             padding: 2em 0;
-            a{ color: black; }
+            @include paragraphs-link();
         }
 
         .main-cols--left__img-container{
-            a{ color: black; }
+            a{
+                color: black;
+                &:hover{
+                    color: rebeccapurple;
+                }
+            }
+            .main-cols--left__img-container__img{
+                margin-top: 1em;
+            }
         }
     }
 
@@ -74,7 +97,7 @@
                 @include mq($until: desktablet) {
                     margin-left: .6em; margin-right: .6em; 
                     width: 30vw; min-width: 320px; max-width: 414px;
-                    height: 40vh; min-height: 480px; max-height: 768px;
+                    height: 40vh; min-height: 450px; max-height: 768px;
                 }
                 display: inline-block;
                 
