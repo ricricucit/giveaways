@@ -1,16 +1,70 @@
+
 <md-sidenav-layout fullscreen>
   <md-sidenav #sidenav [mode]="sideNavMode">
-    <md-nav-list>
-      <p>
-        <a routerLink="/" routerLinkActive="active">DASHBOARD</a><br/>
-        <a routerLink="/about" routerLinkActive="active">ABOUT</a>
-      </p>
-    </md-nav-list>
+    <div fxLayout="row">
+      <div fxFlex="30">
+        <ul class="menu">
+          <li class="menu__item">
+            <a routerLink="/" (click)="sidenav.toggle()">rwrd.net</a>
+          </li>
+          <li class="menu__item">
+            <a routerLink="/" (click)="sidenav.toggle()" routerLinkActive="active">DASHBOARD</a>
+          </li>
+          <li class="menu__item">
+            <a routerLink="/about" (click)="sidenav.toggle()">ABOUT</a>
+          </li>
+        </ul>
+      </div>
+      <div fxFlex="70">
+        <md-list class="rwd-list">
+          <md-list-item class="rwd-list__item">
+            <div md-line>
+              <h5>item.title</h5>
+              <p>item.description</p>
+              <a href="#">Delete</a> <a href="#">Edit</a> | <a href="#">Preview</a>
+            </div>
+          </md-list-item>
+          <md-list-item class="rwd-list__item">
+            <div>
+              <h5>item.title</h5>
+              <p>item.description</p>
+            </div>
+          </md-list-item>
+          <md-list-item class="rwd-list__item">
+            <div>
+              <h5>item.title</h5>
+              <p>item.description</p>
+            </div>
+          </md-list-item>
+        </md-list>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxFlex="30">
+        <h5>wippi</h5>
+      </div>
+      <div fxFlex="70">
+        <a routerLink="/" (click)="sidenav.toggle()">
+          <h5>CREATE NEW REWRD</h5>
+        </a>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxFlex="30">
+        <h5>wooppi</h5>
+      </div>
+      <div fxFlex="70">
+        <a routerLink="/" (click)="sidenav.toggle()">
+          <h5>YOUR PROFILE</h5>
+        </a>
+        <signup></signup>
+      </div>
+    </div>
   </md-sidenav>
   <md-toolbar color="primary">
     <button md-icon-button (click)="sidenav.toggle()">
       <md-icon>menu</md-icon>
-    </button> rewrd.net
+    </button>rewrd.net
   </md-toolbar>
 <md-card id="my-page-card">
   <router-outlet (activate)="activateEvent($event)" (deactivate)="deactivateEvent($event)"></router-outlet>

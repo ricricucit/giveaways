@@ -1,3 +1,20 @@
 /* main.css will be extracted to main dist folder and is imported in index.html */
 /* This file is for setting global styles  */
 @import 'variables';
+
+
+.rwd-list{
+    margin:0;
+    padding:0;
+    overflow-y: scroll;
+    max-height: 50vh;
+    .rwd-list__item{
+        background: lightgray;
+        padding: 50px 0;
+    }
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
