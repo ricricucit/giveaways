@@ -25,5 +25,7 @@ $mq-breakpoints: (
 $mq-show-breakpoints: (mobilablet, desktablet, desktop, wide);
 
 @import 'sass-mq/mq';
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:500,600');
 
+$serif-font:    'Cormorant Garamond', serif;
 $primary-font: "Roboto", "Helvetica", "Arial", sans-serif;
