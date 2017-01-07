@@ -1,18 +1,13 @@
-<md-sidenav-layout fullscreen>
+<h4 class="md-primary">
+    <a class="main-logo" (click)="sidenav.toggle()">rewrd.net</a>
+</h4>
+<md-sidenav-layout fullscreen class="md-dark-theme"> <!-- swithing to dark-theme -->
   <md-sidenav #sidenav mode="push">
     <div fxLayout="row">
       <div fxFlex="30">
-        <ul class="menu">
-          <li class="menu__item">
-            <a routerLink="/" (click)="sidenav.toggle()">rwrd.net</a>
-          </li>
-          <li class="menu__item">
-            <a routerLink="/" (click)="sidenav.toggle()" routerLinkActive="active">DASHBOARD</a>
-          </li>
-          <li class="menu__item">
-            <a routerLink="/about" (click)="sidenav.toggle()">ABOUT</a>
-          </li>
-        </ul>
+          <h4 class="menu__item md-primary"><a routerLink="/" (click)="sidenav.toggle()" routerLinkActive="active">Dasboard</a></h4>
+          <h4 class="menu__item md-primary"><a routerLink="/about" (click)="sidenav.toggle()">About</a></h4>
+          <h4 class="menu__item md-primary"><a routerLink="/about" (click)="sidenav.toggle()">Logout</a></h4>
       </div>
       <div fxFlex="70">
         <md-list class="rwd-list">
@@ -39,33 +34,22 @@
       </div>
     </div>
     <div fxLayout="row">
-      <div fxFlex="30">
-        <h5>wippi</h5>
-      </div>
-      <div fxFlex="70">
+      <div fxFlex="70" fxFlexOffset="30">
         <a routerLink="/" (click)="sidenav.toggle()">
-          <h5>CREATE NEW REWRD</h5>
+          <h3><md-icon>add_circle</md-icon>CREATE NEW REWRD</h3>
         </a>
       </div>
     </div>
     <div fxLayout="row">
-      <div fxFlex="30">
-        <h5>wooppi</h5>
-      </div>
-      <div fxFlex="70">
+      <div fxFlex="70" fxFlexOffset="30">
         <a routerLink="/" (click)="sidenav.toggle()">
-          <h5>YOUR PROFILE</h5>
+          <h3><md-icon>account_circle</md-icon>PROFILE</h3>
         </a>
         <signup></signup>
       </div>
     </div>
   </md-sidenav>
-  
-  <a class="main-logo" (click)="sidenav.toggle()">
-      rewrd.net
-  </a>
-
-  <md-card class="page-card">
+  <md-card class="page-card md-light-theme">
     <router-outlet (activate)="activateEvent($event)" (deactivate)="deactivateEvent($event)"></router-outlet>
   </md-card>
 </md-sidenav-layout>

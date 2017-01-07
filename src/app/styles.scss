@@ -19,7 +19,7 @@ $accent:  md-palette($md-blue, A200, A100, A400);
 $warn:    md-palette($md-orange);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$theme: md-dark-theme($primary, $accent, $warn);
+$theme: md-light-theme($primary, $accent, $warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -63,6 +63,10 @@ html, body {
   font-family: $primary-font;
   font-weight: 400;
   line-height: 20px; 
+}
+
+a{
+    text-decoration: none;
 }
 
 pre {
@@ -189,3 +193,35 @@ ul, ol {
   font-weight: 400;
   line-height: 1.5em;
   letter-spacing: 0; }
+
+.md-dark-theme {
+  $dark-primary: md-palette($md-yellow);
+  $dark-accent:  md-palette($md-blue, A200, A100, A400);
+  $dark-warn:    md-palette($md-orange);
+
+  $dark-theme: md-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+  @include angular-material-theme($dark-theme);
+  
+  h1,h2,h3,h4,h5,h6,h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{
+    color: yellow;
+    font-family: $serif-font;
+  }
+  h3, h3 a{
+    font-family: $primary-font;
+  }
+}
+.md-light-theme {
+  $light-primary: md-palette($md-yellow);
+  $light-accent:  md-palette($md-blue, A200, A100, A400);
+  $light-warn:    md-palette($md-orange);
+
+  $light-theme: md-light-theme($light-primary, $light-accent, $light-warn);
+
+  @include angular-material-theme($light-theme);
+  
+  h2,h3,h4,h5,h6,h2 a,h3 a,h4 a,h5 a,h6 a{ /*h1,h1 a*/
+    color: $grey-text;
+    font-family: $primary-font;
+  }
+}

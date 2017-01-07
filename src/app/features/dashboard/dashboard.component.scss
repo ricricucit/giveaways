@@ -47,7 +47,7 @@
         }
         .main-cols--left__paragraph{
             font-size: 1em;
-            color: rgba(74,74,74,1);
+            color: $grey-text;
             @include paragraphs-link();
         }
 
