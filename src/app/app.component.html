@@ -1,7 +1,8 @@
+<div class="md-dark-theme">
 <h4 class="md-primary">
     <a class="main-logo" (click)="sidenav.toggle()">rewrd.net</a>
 </h4>
-<md-sidenav-layout fullscreen class="md-dark-theme"> <!-- swithing to dark-theme -->
+<md-sidenav-layout fullscreen> <!-- class="md-dark-theme"> <!-- swithing to dark-theme -->
   <md-sidenav #sidenav mode="push">
     <div fxLayout="row">
       <div fxFlex="30">
@@ -49,8 +50,11 @@
       </div>
     </div>
   </md-sidenav>
-  <md-card class="page-card md-light-theme">
-    <router-outlet (activate)="activateEvent($event)" (deactivate)="deactivateEvent($event)"></router-outlet>
-  </md-card>
+  <div class="md-light-theme">
+    <md-card class="page-card">
+      <router-outlet (activate)="activateEvent($event)" (deactivate)="deactivateEvent($event)"></router-outlet>
+    </md-card>
+  </div>
 </md-sidenav-layout>
+</div>
 <!-- <my-store-devtools *ngIf="showMonitor"></my-store-devtools> -->
