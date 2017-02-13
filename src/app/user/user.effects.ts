@@ -38,7 +38,7 @@ export class UserEffects {
   @Effect() register$ = this.actions$
     .ofType(UserActions.REGISTER_USER)
     .map(action => action.payload)
-    .switchMap(() => this.userService.register()
+    .switchMap(user => this.userService.register(user)
       // If successful, dispatch success action with result
       .mergeMap((res: any) => Observable.of(
         this.userActions.registerUserSuccess(res)

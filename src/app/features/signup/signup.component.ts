@@ -72,15 +72,28 @@ export class SignupComponent implements OnDestroy, OnInit {
       this.snackBar.open('Some info is missing...', 'OK', config);
     }else{
       //no ID means that the user is new, so we create it
-      if(this.user.id === 0){
-        alert('create user!');
+      if(!this.user.id || this.user.id === 0){
+        alert('CREATE user!');
         this.store.dispatch(this.userActions.registerUser(
-          Object.assign({}, this.user, { name: this.form.get('name').value }
+          Object.assign({}, this.user, { 
+                                          name: this.form.get('name').value,
+                                          surname: this.form.get('surname').value,
+                                          email: this.form.get('email').value,
+                                          password: this.form.get('password').value,
+                                          image: this.form.get('image').value
+                                        }
         )));
       //user w/ ID means the user exists, so we modify it
-      }else{
+    }else{
+        alert('EDIT user!');
         this.store.dispatch(this.userActions.editUser(
-          Object.assign({}, this.user, { name: this.form.get('name').value }
+            Object.assign({}, this.user,  { 
+                                            name: this.form.get('name').value,
+                                            surname: this.form.get('surname').value,
+                                            email: this.form.get('email').value,
+                                            password: this.form.get('password').value,
+                                            image: this.form.get('image').value
+                                          }
         )));
       }
     }
