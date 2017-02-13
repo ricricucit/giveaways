@@ -1,4 +1,33 @@
+/*
+-----------------------------------------------------------------------------------------------
+//////////////////////////////////  https://material.angularjs.org/1.0.5/layout/introduction  |
+-----------------------------------------------------------------------------------------------
+layout	        flex	            Sets default layout direction & flex unless overridden by another breakpoint.
+layout-xs	    flex-xs	            width < 600px
+layout-gt-xs	flex-gt-xs	        width >= 600px
+layout-sm	    flex-sm	            600px <= width < 960px
+layout-gt-sm	flex-gt-sm	        width >= 960px
+layout-md	    flex-md	            960px <= width < 1280px
+layout-gt-md	flex-gt-md	        width >= 1280px
+layout-lg	    flex-lg	            1280px <= width < 1920px
+layout-gt-lg	flex-gt-lg	        width >= 1920/b>px
+layout-xl	    flex-xl	            width >= 1920px
+*/
+
+$mq-breakpoints: (
+    mobilablet:     600px,      // Mobile and some tablets
+    desktablet:     960px,      // Some desktops and some tablet
+    desktop:        1280px,     // Desktops
+    wide:           1920px      // MacBook 15" Retina
+);
+
+//DEBUG breakpoints (top right corner):
+$mq-show-breakpoints: (mobilablet, desktablet, desktop, wide);
+
+@import 'sass-mq/mq';
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:500,600');
+
+$serif-font:    'Cormorant Garamond', serif;
 $primary-font: "Roboto", "Helvetica", "Arial", sans-serif;
-$break-small: 320px;
-$break-mobile: 800px;
-$break-large: 1200px;
+
+$grey-text:  rgba(74,74,74,1);

@@ -1,0 +1,114 @@
+@import '../../variables';
+
+@mixin paragraphs-link(){
+  a{
+      font-weight: 600;
+      display: inline-block;
+      color: black;
+      line-height: 1.2em;
+      border-bottom: 1px solid black;
+      transition: all .2s ease-in-out;
+      &:hover{
+          color: rebeccapurple;
+          border-bottom: 1px solid rebeccapurple;
+      }
+  }
+}
+
+.main-cols{
+    height: 100vh;
+
+    @include mq($until: desktablet) {
+        height: auto;
+        padding: 2em 1.5em;
+    }
+    
+
+    &.main-cols--left{
+        min-width: 45vw;
+        background: white;
+        color: darkgray;
+        overflow-y: scroll;
+
+        @include mq($until: desktablet) {
+            min-width: auto;
+            overflow-y: auto;
+            text-align: center;
+        }
+
+        .main-cols--left__time{
+            color: rebeccapurple;
+            @include mq($until: desktablet) {
+                margin-top: 100px;
+            }
+        }
+        .main-cols--left__title{
+            color: black;
+        }
+        .main-cols--left__paragraph{
+            font-size: 1em;
+            color: $grey-text;
+            @include paragraphs-link();
+        }
+
+        .main-cols--left__link{
+            padding: 2em 0;
+            @include paragraphs-link();
+        }
+
+        .main-cols--left__img-container{
+            a{
+                color: black;
+                &:hover{
+                    color: rebeccapurple;
+                }
+            }
+            .main-cols--left__img-container__img{
+                margin-top: 1em;
+            }
+        }
+    }
+
+    &.main-cols--right{
+        min-width: 55vw;
+        background: rebeccapurple;
+        overflow: hidden;
+
+        .main-cols--right__message{
+            color: white;
+        }
+        .main-cols--right__rwrd-list{
+            overflow-x: scroll;
+            height: auto;
+            white-space: nowrap;
+
+            .main-cols--right__rwrd-list__item{
+                .example-header-image{
+                    background: url(https://placeholdit.imgix.net/~text?txtsize=5&txt=5x5&w=50&h=50) center center;
+                }
+                background: white;
+                margin-left: 1em; margin-right: 1em; 
+                &:first-child{ margin-left: 0; } 
+                &:last-child{ 
+                    margin-right: 0; //33vw/2
+                    @include mq($until: desktablet) {
+                        margin-right: 0; 
+                    }
+                }
+                width: 33vw; min-width: 320px; max-width: 450px;
+                height: 70vh; min-height: 414px; max-height: 768px;
+                @include mq($until: desktablet) {
+                    margin-left: .6em; margin-right: .6em; 
+                    width: 30vw; min-width: 320px; max-width: 414px;
+                    height: 40vh; min-height: 450px; max-height: 768px;
+                }
+                display: inline-block;
+                
+            }
+        }
+    }
+}
+.main-img{
+    position: fixed;
+    margin-left: calc(45vw - 50px);
+}

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { views } from './app-nav-views';
 import { MOBILE } from './services/constants';
 
 @Component({
@@ -14,8 +13,6 @@ export class AppComponent {
     ['monitor', 'both'].includes(STORE_DEV_TOOLS) // set in constants.js file in project root
   );
   mobile = MOBILE;
-  sideNavMode = MOBILE ? 'over' : 'side';
-  views = views;
 
   constructor(
     public route: ActivatedRoute,
