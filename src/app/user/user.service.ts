@@ -21,12 +21,20 @@ export class UserService extends RequestBase {
   }
 
   logout(): Observable<string> {
-    return this.http.get(`${API_BASE_URL}/logout`, this.optionsNoPre)
-      .map(res => res.text());
+    return Observable.fromPromise(this.backand.signout());
+    /*return this.http.get(`${API_BASE_URL}/logout`, this.optionsNoPre)
+      .map(res => res.text());*/
   }
 
+  login(action): Observable<string> {
+    //here API call to login user
+    alert(action.email + ',' + action.password);
+    return Observable.fromPromise(this.backand.signin(action.email, action.password));
+  }
+
+
   register(user): Observable<string> {
-    //here API call to register users
+    //here API call to register user
     let today: string = moment().format(); //Format used by Backand.com = 2017-02-13T18:57:30+01:00
     return Observable.fromPromise(this.backand.signup(user.name, user.surname, user.email, user.password, user.password, {image: user.image, options: user.options, ts: today}));
   }

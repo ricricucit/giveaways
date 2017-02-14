@@ -1,23 +1,47 @@
-<section>
-  <form [formGroup]="form" (ngSubmit)="submitState()" autocomplete="off">
-    <md-input formControlName="name" [placeholder]="nameLabel"></md-input><br>
-    <small *ngIf="!form.controls.name.valid">This is required!</small><br>
-    <md-input formControlName="surname" [placeholder]="surnameLabel"></md-input><br>
-    <small *ngIf="!form.controls.surname.valid">This is required!</small><br>
-    <md-input formControlName="email" [placeholder]="emailLabel"></md-input><br>
-    <small *ngIf="!form.controls.email.valid">This is required!</small><br>
-    <md-input formControlName="password" [placeholder]="passwordLabel" type="password"></md-input><br>
-    <small *ngIf="!form.controls.password.valid">This is required!</small><br>
-    <!-- missing file upload -->
+<md-tab-group>
+  <md-tab label="Log In">
 
-    <button md-raised-button color="primary" type="submit">Register (Update Store)</button>
-    <button md-raised-button color="accent" type="button" (click)="clearName()">Clear name</button>
-  </form>
-  <br><br>
+    <form [formGroup]="loginForm" (ngSubmit)="signIn('login')" autocomplete="off">
+      <md-input formControlName="email" [placeholder]="emailLabel"></md-input><br>
+      <small *ngIf="!loginForm.controls.email.valid">This is required!</small><br>
+      <md-input formControlName="password" [placeholder]="passwordLabel" type="password"></md-input><br>
+      <small *ngIf="!loginForm.controls.password.valid">This is required!</small><br>
+
+      <button md-raised-button color="primary" type="submit">Login (Update Store)</button>
+    </form>
+    <br><br>
     <button id="my-logout-button" md-raised-button color="accent" (click)="logout()">Logout</button>
-</section>
 
-<pre>
-<p>Value: {{ form.value | json }}</p>
-<p>Validation status: {{ form.status }}</p>
-</pre>
+    <pre>
+    Value: {{ loginForm.value | json }}
+    - - - 
+    Validation LOGIN: {{ loginForm.status }}
+    </pre>
+
+  </md-tab>
+
+  <md-tab label="Sign Up">
+
+    <form [formGroup]="registerForm" (ngSubmit)="signIn('register')" autocomplete="off">
+      <md-input formControlName="name" [placeholder]="nameLabel"></md-input><br>
+      <small *ngIf="!registerForm.controls.name.valid">This is required!</small><br>
+      <md-input formControlName="surname" [placeholder]="surnameLabel"></md-input><br>
+      <small *ngIf="!registerForm.controls.surname.valid">This is required!</small><br>
+      <md-input formControlName="email" [placeholder]="emailLabel"></md-input><br>
+      <small *ngIf="!registerForm.controls.email.valid">This is required!</small><br>
+      <md-input formControlName="password" [placeholder]="passwordLabel" type="password"></md-input><br>
+      <small *ngIf="!registerForm.controls.password.valid">This is required!</small><br>
+      <!-- missing file upload -->
+      <button md-raised-button color="primary" type="submit">Register (Update Store)</button>
+    </form>
+    <br><br>
+    <button id="my-logout-button" md-raised-button color="accent" (click)="logout()">Logout</button>
+
+    <pre>
+    Value: {{ registerForm.value | json }}
+    - - - 
+    Validation REGISTER: {{ registerForm.status }}
+    </pre>
+
+  </md-tab>
+</md-tab-group>

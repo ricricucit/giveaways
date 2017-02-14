@@ -63,6 +63,32 @@ export class UserActions {
 
   /* --------------------------------------- end EDIT */
 
+  /* --------------------------------------- LOG IN */
+  static LOGIN = '[User] Login';
+  login(data: any): Action {
+    return {
+      type: UserActions.LOGIN,
+      payload: data
+    };
+  }
+
+  static LOGIN_FAIL = '[User] Login Fail';
+  loginFail(err: Error): Action {
+    return {
+      type: UserActions.LOGIN_FAIL,
+      payload: err
+    };
+  }
+
+  static LOGIN_SUCCESS = '[User] Login Success';
+  loginSuccess(res: Response): Action {
+    return {
+      type: UserActions.LOGIN_SUCCESS,
+      payload: res
+    };
+  }
+  /* --------------------------------------- end LOG IN */
+
   /* --------------------------------------- LOG OUT */
   static LOGOUT = '[User] Logout';
   logout(): Action {

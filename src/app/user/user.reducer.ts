@@ -20,12 +20,12 @@ export interface UserState {
 
 export const initialState: UserState = {
   
-  user: { name: 'Name', 
-          surname: 'Surname', 
-          email: 'noemail@example.com',
+  user: { name: '666', 
+          surname: '666', 
+          email: '666@666.com',
           image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=USER&w=150&h=150',
           options: '{}',
-          password: 'password',
+          password: '666666',
           ts: 0
         },
   loading: false,
