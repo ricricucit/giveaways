@@ -52,6 +52,22 @@ export class UserEffects {
       ))
     );
 
+  @Effect() getUser$ = this.actions$
+    // Listen for the 'LOGIN' action
+    .ofType(UserActions.GET_USER)
+    // Map the payload to use as the request body
+    .map(action => action.payload)
+    .switchMap(() => this.userService.get()
+      // If successful, dispatch success action with result
+      .mergeMap((res: any) => Observable.of(
+        this.userActions.getUserSuccess(res)
+        )
+      )
+      .catch((err) => Observable.of(
+        // If request fails, dispatch failed action with result (error)
+        this.userActions.getUserSuccess(err)
+      ))
+    );
 
   @Effect() register$ = this.actions$
     .ofType(UserActions.REGISTER_USER)
@@ -67,5 +83,21 @@ export class UserEffects {
         this.userActions.registerUserFail(err)
       ))
     );
+
+  @Effect() editUser$ = this.actions$
+    .ofType(UserActions.EDIT_USER)
+    .map(action => action.payload)
+    .switchMap(user => this.userService.edit(user)
+      // If successful, dispatch success action with result
+      .mergeMap((res: any) => Observable.of(
+        this.userActions.editUserSuccess(res)
+        )
+      )
+      .catch((err) => Observable.of(
+        // If request fails, dispatch failed action with result (error)
+        this.userActions.editUserFail(err)
+      ))
+    );
+
 
 }

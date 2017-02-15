@@ -1,10 +1,13 @@
 <md-tab-group>
   <md-tab label="Log In">
-
-    <form [formGroup]="loginForm" (ngSubmit)="signIn('login')" autocomplete="off">
-      <md-input formControlName="email" [placeholder]="emailLabel"></md-input><br>
-      <small *ngIf="!loginForm.controls.email.valid">This is required!</small><br>
-      <md-input formControlName="password" [placeholder]="passwordLabel" type="password"></md-input><br>
+    <form [formGroup]="loginForm" (ngSubmit)="signIn('login')">
+      <md-input-container>
+        <input md-input formControlName="username" [placeholder]="emailLabel" [(ngModel)]="user.username" /><br>
+      </md-input-container>
+      <small *ngIf="!loginForm.controls.username.valid">This is required!</small><br>
+      <md-input-container>
+        <input md-input formControlName="password" [placeholder]="passwordLabel" type="password" [(ngModel)]="user.password" /><br>
+      </md-input-container>
       <small *ngIf="!loginForm.controls.password.valid">This is required!</small><br>
 
       <button md-raised-button color="primary" type="submit">Login (Update Store)</button>
@@ -20,16 +23,24 @@
 
   </md-tab>
 
-  <md-tab label="Sign Up">
+  <md-tab [label]="(user.userId && user.userId!==0) ? editLabel : signUpLabel">
 
     <form [formGroup]="registerForm" (ngSubmit)="signIn('register')" autocomplete="off">
-      <md-input formControlName="name" [placeholder]="nameLabel"></md-input><br>
-      <small *ngIf="!registerForm.controls.name.valid">This is required!</small><br>
-      <md-input formControlName="surname" [placeholder]="surnameLabel"></md-input><br>
-      <small *ngIf="!registerForm.controls.surname.valid">This is required!</small><br>
-      <md-input formControlName="email" [placeholder]="emailLabel"></md-input><br>
-      <small *ngIf="!registerForm.controls.email.valid">This is required!</small><br>
-      <md-input formControlName="password" [placeholder]="passwordLabel" type="password"></md-input><br>
+      <md-input-container>
+        <input md-input formControlName="firstName" [placeholder]="nameLabel" [(ngModel)]="user.firstName"/><br>
+      </md-input-container>
+      <small *ngIf="!registerForm.controls.firstName.valid">This is required!</small><br>
+      <md-input-container>
+        <input md-input formControlName="lastName" [placeholder]="surnameLabel" [(ngModel)]="user.lastName"/><br>
+      </md-input-container>
+      <small *ngIf="!registerForm.controls.lastName.valid">This is required!</small><br>
+      <md-input-container>
+        <input md-input formControlName="username" [placeholder]="emailLabel" [(ngModel)]="user.username"/><br>
+      </md-input-container>
+      <small *ngIf="!registerForm.controls.username.valid">This is required!</small><br>
+      <md-input-container>
+        <input md-input formControlName="password" [placeholder]="passwordLabel" type="password" [(ngModel)]="user.password"/><br>
+      </md-input-container>
       <small *ngIf="!registerForm.controls.password.valid">This is required!</small><br>
       <!-- missing file upload -->
       <button md-raised-button color="primary" type="submit">Register (Update Store)</button>

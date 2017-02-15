@@ -20,23 +20,35 @@ export class UserService extends RequestBase {
     super(http);
   }
 
+  //logout the user
   logout(): Observable<string> {
     return Observable.fromPromise(this.backand.signout());
-    /*return this.http.get(`${API_BASE_URL}/logout`, this.optionsNoPre)
-      .map(res => res.text());*/
   }
 
-  login(action): Observable<string> {
+  //login the user
+  login(action:any): Observable<string> {
     //here API call to login user
     alert(action.email + ',' + action.password);
     return Observable.fromPromise(this.backand.signin(action.email, action.password));
   }
 
-
-  register(user): Observable<string> {
+  //register and login the user
+  register(user:any): Observable<string> {
     //here API call to register user
     let today: string = moment().format(); //Format used by Backand.com = 2017-02-13T18:57:30+01:00
     return Observable.fromPromise(this.backand.signup(user.name, user.surname, user.email, user.password, user.password, {image: user.image, options: user.options, ts: today}));
+  }
+
+  //register and login the user
+  edit(user:any): Observable<string> {
+    //here API call to register user
+    let today: string = moment().format(); //Format used by Backand.com = 2017-02-13T18:57:30+01:00
+    return Observable.fromPromise(this.backand.object.update('users', user.userId, user)) //, params | object | A hash of filter parameters. Allowed parameters are: returnObject, deep
+  }
+
+  //get the logged in user
+  get(force = false): Observable<string> { //force = Forces the SDK to refresh its data from the server. Default: FALSE
+    return Observable.fromPromise(this.backand.user.getUserDetails(force));
   }
 
 }
