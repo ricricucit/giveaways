@@ -42,7 +42,7 @@ export function userReducer(state = initialState, action: Action): UserState {
 
     case UserActions.LOGIN_SUCCESS: {
       return Object.assign({}, state, {
-        user: action.payload.data
+        user: Object.assign({}, state.user, action.payload.data)
       });
     }
 

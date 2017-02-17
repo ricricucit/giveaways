@@ -43,7 +43,7 @@ export class UserService extends RequestBase {
   edit(user:any): Observable<string> {
     //here API call to register user
     let today: string = moment().format(); //Format used by Backand.com = 2017-02-13T18:57:30+01:00
-    return Observable.fromPromise(this.backand.object.update('users', user.userId, user)) //, params | object | A hash of filter parameters. Allowed parameters are: returnObject, deep
+    return Observable.fromPromise(this.backand.object.update('users', user.userId, user, {returnObject : true})); //, params | object | A hash of filter parameters. Allowed parameters are: returnObject, deep
   }
 
   //get the logged in user
