@@ -16,6 +16,8 @@ import { UserEffects } from './user/user.effects';
 
 import {FlexLayoutModule} from "@angular/flex-layout";
 
+import {MomentModule} from 'angular2-moment';
+
 const STORE_DEV_TOOLS_IMPORTS = [];
 if (ENV === 'development' && !AOT &&
   ['monitor', 'both'].includes(STORE_DEV_TOOLS) // set in constants.js file in project root
@@ -38,6 +40,7 @@ export const APP_IMPORTS = [
   StoreModule.provideStore(rootReducer),
   STORE_DEV_TOOLS_IMPORTS,
   StoreDevToolsModule,
-  FlexLayoutModule.forRoot()
+  FlexLayoutModule.forRoot(),
+  MomentModule
 ];
 

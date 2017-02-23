@@ -18,12 +18,15 @@ import { User } from '../../user/user.model';
 
 export class SignupComponent implements OnDestroy, OnInit {
   destroyed$: Subject<any> = new Subject<any>();
-  form: FormGroup;
+  registerForm = new FormGroup({});
+  loginForm = new FormGroup({});
   nameLabel = 'Enter your name';
   surnameLabel = 'Enter your surname';
   emailLabel = 'Enter your e-mail';
   passwordLabel = 'Enter your Password';
   imageLabel = 'Upload a photo of Yourself';
+  signUpLabel = 'Sign Up';
+  editLabel = 'Edit Profile';
   user: User;
   user$: Observable<User>;
   constructor(
@@ -33,12 +36,16 @@ export class SignupComponent implements OnDestroy, OnInit {
     public snackBar: MdSnackBar
   ) {
 
-    this.form = fb.group({
-      name: ['',  Validators.required],
-      surname:  ['', Validators.required],
-      email: ['', Validators.required],
+    this.registerForm = fb.group({
+      firstName: ['',  Validators.required],
+      lastName:  ['', Validators.required],
+      username: ['', Validators.required], //this is username
       password:  ['', Validators.required],
       image: ''
+    });
+    this.loginForm = fb.group({
+      username: ['', Validators.required],
+      password:  ['', Validators.required]
     });
     this.user$ = this.store.select(state => state.user.user);
     this.user$.takeUntil(this.destroyed$)
@@ -46,43 +53,75 @@ export class SignupComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
-    this.form.get('name').setValue(this.user.name);
-    this.form.get('surname').setValue(this.user.surname);
-    this.form.get('email').setValue(this.user.email);
-    this.form.get('password').setValue(this.user.password);
-    this.form.get('image').setValue(this.user.image);
+
   }
 
-  clearName() {
+/*  clearName() {
     this.store.dispatch(this.userActions.editUser(
       Object.assign({}, this.user, { name: '' }
       )));
 
-    this.form.get('name').setValue('');
-  }
+    this.registerForm.get('name').setValue('');
+  }*/
 
   logout() {
     this.store.dispatch(this.userActions.logout());
   }
 
-  submitState() {
-    if(!this.form.valid){
-      //show snackBar to alert user about errors
-      let config = {duration: 3500};
-      this.snackBar.open('Some info is missing...', 'OK', config);
-    }else{
-      //no ID means that the user is new, so we create it
-      if(this.user.id === 0){
-        alert('create user!');
-        this.store.dispatch(this.userActions.registerUser(
-          Object.assign({}, this.user, { name: this.form.get('name').value }
-        )));
-      //user w/ ID means the user exists, so we modify it
-      }else{
-        this.store.dispatch(this.userActions.editUser(
-          Object.assign({}, this.user, { name: this.form.get('name').value }
-        )));
-      }
+  signIn(action) {
+
+    switch(action){
+      case 'login':
+        if(!this.loginForm.valid){
+          //show snackBar to alert user about errors
+          let config = {duration: 3500};
+          this.snackBar.open('Some info is missing...', 'OK', config);
+          return;
+        }else{
+          alert('login!');
+          this.store.dispatch(this.userActions.login({
+              email: this.loginForm.get('username').value,
+              password: this.loginForm.get('password').value
+          }));
+        }
+      break;
+
+      case 'register':
+        if(!this.registerForm.valid){
+          //show snackBar to alert user about errors
+          let config = {duration: 3500};
+          this.snackBar.open('Some info is missing...', 'OK', config);
+          return;
+        }else{
+          alert('Register OR Edit!');
+          //no ID means that the user is new, so we create it
+          if(!this.user.userId || this.user.userId === 0){
+            alert('CREATE user!');
+            this.store.dispatch(this.userActions.registerUser(
+              Object.assign({}, this.user, { 
+                                              firstName: this.registerForm.get('firstName').value,
+                                              lastName: this.registerForm.get('lastName').value,
+                                              username: this.registerForm.get('username').value,
+                                              password: this.registerForm.get('password').value,
+                                              image: this.registerForm.get('image').value
+                                            }
+            )));
+          //user w/ ID means the user exists, so we modify it
+          }else{
+            alert('EDIT user!');
+            this.store.dispatch(this.userActions.editUser(
+                Object.assign({}, this.user,  { 
+                                                firstName: this.registerForm.get('firstName').value,
+                                                lastName: this.registerForm.get('lastName').value,
+                                                username: this.registerForm.get('username').value,
+                                                password: this.registerForm.get('password').value,
+                                                image: this.registerForm.get('image').value
+                                              }
+            )));
+          }
+        }
+
+      break;
     }
   }
 

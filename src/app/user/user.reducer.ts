@@ -10,22 +10,21 @@ export interface UserState {
   loaded: boolean;
 };
 
-
-  // readonly id?: number;
-  // readonly name: string;
-  // readonly surname: string;
-  // readonly image: string;         //avatar
-  // readonly options?: Object;       //user options (lang, timezone, etc.)
-  // readonly ts: number;            //timestamp
-
 export const initialState: UserState = {
-  
-  user: { name: 'Name', 
-          surname: 'Surname', 
-          email: 'noemail@example.com',
+
+  user: { 
+          access_token : '',
+          appName : '',
+          expires_in : '',
+          userId : 0,
+          firstName: 'Name', 
+          lastName: 'LastName', 
+          fullName: 'Name LastName', 
+          regId: '',
+          username: 'your@email.com', //email
           image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=USER&w=150&h=150',
           options: '{}',
-          password: 'password',
+          password: '',
           ts: 0
         },
   loading: false,
@@ -38,6 +37,12 @@ export function userReducer(state = initialState, action: Action): UserState {
     case UserActions.EDIT_USER: {
       return Object.assign({}, state, {
         user: action.payload
+      });
+    }
+
+    case UserActions.LOGIN_SUCCESS: {
+      return Object.assign({}, state, {
+        user: Object.assign({}, state.user, action.payload.data)
       });
     }
 

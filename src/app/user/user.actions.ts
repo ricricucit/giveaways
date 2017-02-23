@@ -36,6 +36,32 @@ export class UserActions {
   /* --------------------------------------- end REGISTER */
 
 
+  /* --------------------------------------- GET */
+  static GET_USER = '[User] Get User';
+  getUser(user: User): Action {
+    return {
+      type: UserActions.GET_USER,
+      payload: user
+    };
+  }
+
+  static GET_USER_FAIL = '[User] Get User Fail';
+  getUserFail(err: Error): Action {
+    return {
+      type: UserActions.GET_USER_FAIL,
+      payload: err
+    };
+  }
+
+  static GET_USER_SUCCESS = '[User] Get User Success';
+  getUserSuccess(res: Response): Action {
+    return {
+      type: UserActions.GET_USER_SUCCESS,
+      payload: res
+    };
+  }
+  /* --------------------------------------- end GET */
+
   /* --------------------------------------- EDIT */
   static EDIT_USER = '[User] Edit User';
   editUser(user: User): Action {
@@ -62,6 +88,32 @@ export class UserActions {
   }
 
   /* --------------------------------------- end EDIT */
+
+  /* --------------------------------------- LOG IN */
+  static LOGIN = '[User] Login';
+  login(data: any): Action {
+    return {
+      type: UserActions.LOGIN,
+      payload: data
+    };
+  }
+
+  static LOGIN_FAIL = '[User] Login Fail';
+  loginFail(err: Error): Action {
+    return {
+      type: UserActions.LOGIN_FAIL,
+      payload: err
+    };
+  }
+
+  static LOGIN_SUCCESS = '[User] Login Success';
+  loginSuccess(res: Response): Action {
+    return {
+      type: UserActions.LOGIN_SUCCESS,
+      payload: res
+    };
+  }
+  /* --------------------------------------- end LOG IN */
 
   /* --------------------------------------- LOG OUT */
   static LOGOUT = '[User] Logout';
