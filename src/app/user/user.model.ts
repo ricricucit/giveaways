@@ -9,7 +9,7 @@ export interface User {
   readonly regId?: string;
   readonly username: string;
   readonly password?: string;
-  readonly image?: string;         //avatar
-  readonly options?: Object;       //user options (lang, timezone, etc.)
-  readonly ts: number;            //timestamp
+  readonly image?: string;         // avatar
+  readonly options?: Object;       // user options (lang, timezone, etc.)
+  readonly ts: number;            // timestamp
 }
