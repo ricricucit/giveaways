@@ -14,9 +14,9 @@ import { rootReducer } from './reducers';
 import { StoreDevToolsModule } from './features/store-devtools.module';
 import { UserEffects } from './user/user.effects';
 
-import {FlexLayoutModule} from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
-import {MomentModule} from 'angular2-moment';
+import { MomentModule } from 'angular2-moment';
 
 const STORE_DEV_TOOLS_IMPORTS = [];
 if (ENV === 'development' && !AOT &&

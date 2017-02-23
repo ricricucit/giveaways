@@ -29,7 +29,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
-    //nothing much for now
+    // nothing much for now
   }
 
   ngOnDestroy() {
