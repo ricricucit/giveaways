@@ -6,7 +6,7 @@
       </md-input-container>
       <small *ngIf="!loginForm.controls.username.valid">This is required!</small><br>
       <md-input-container>
-        <input md-input formControlName="password" [placeholder]="passwordLabel" type="password" [(ngModel)]="user.password" /><br>
+        <input md-input formControlName="password" [placeholder]="passwordLabel" type="password" [(ngModel)]="user.password"/><br>
       </md-input-container>
       <small *ngIf="!loginForm.controls.password.valid">This is required!</small><br>
 

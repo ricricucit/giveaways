@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { MOBILE } from './services/constants';
 
-import { BackandService } from '@backand/angular2-sdk'
+import { BackandService } from '@backand/angular2-sdk';
 
 @Component({
   selector: 'my-app',
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  ngOnInit():void{
+  ngOnInit(): void {
     this.backand.init({
       appName: 'giveaway',
       anonymousToken: '6a4c7dfd-6482-4867-827f-57c3804e80a9',

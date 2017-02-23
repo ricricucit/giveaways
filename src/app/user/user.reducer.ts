@@ -12,16 +12,16 @@ export interface UserState {
 
 export const initialState: UserState = {
 
-  user: { 
+  user: {
           access_token : '',
           appName : '',
           expires_in : '',
           userId : 0,
-          firstName: 'Name', 
-          lastName: 'LastName', 
-          fullName: 'Name LastName', 
+          firstName: 'Name',
+          lastName: 'LastName',
+          fullName: 'Name LastName',
           regId: '',
-          username: 'your@email.com', //email
+          username: 'your@email.com', // email
           image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=USER&w=150&h=150',
           options: '{}',
           password: '',
