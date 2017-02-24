@@ -6,8 +6,7 @@ import { User } from './user.model';
 
 export interface UserState {
   user: User;
-  loading: boolean;
-  loaded: boolean;
+  isLoading: boolean;
 };
 
 export const initialState: UserState = {
@@ -27,8 +26,7 @@ export const initialState: UserState = {
           password: '',
           ts: 0
         },
-  loading: false,
-  loaded: true,
+  isLoading: false
 };
 
 export function userReducer(state = initialState, action: Action): UserState {
@@ -40,10 +38,20 @@ export function userReducer(state = initialState, action: Action): UserState {
       });
     }
 
+    case UserActions.LOGIN: {
+      return Object.assign({}, state, {
+        user: Object.assign({}, state.user, action.payload.data)
+      }, {isLoading: true});
+    }
+
     case UserActions.LOGIN_SUCCESS: {
       return Object.assign({}, state, {
         user: Object.assign({}, state.user, action.payload.data)
-      });
+      }, {isLoading: false});
+    }
+
+    case UserActions.LOGIN_FAIL: {
+      return Object.assign({}, state, {isLoading: false});
     }
 
     default: {

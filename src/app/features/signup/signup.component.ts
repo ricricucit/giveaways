@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { MdSnackBar } from '@angular/material';
 
 import { AppState } from '../../reducers';
+import { UserState } from '../../user/user.reducer';
 import { Store } from '@ngrx/store';
 import { UserActions } from '../../user/user.actions';
 import { User } from '../../user/user.model';
@@ -28,7 +29,8 @@ export class SignupComponent implements OnDestroy, OnInit {
   signUpLabel = 'Sign Up';
   editLabel = 'Edit Profile';
   user: User;
-  user$: Observable<User>;
+  isLoading: boolean;
+  user$: Observable<UserState>;
   constructor(
     fb: FormBuilder,
     private store: Store<AppState>,
@@ -47,9 +49,9 @@ export class SignupComponent implements OnDestroy, OnInit {
       username: ['', Validators.required],
       password:  ['', Validators.required]
     });
-    this.user$ = this.store.select(state => state.user.user);
+    this.user$ = this.store.select(state => state.user);
     this.user$.takeUntil(this.destroyed$)
-      .subscribe(user => { this.user = user; });
+      .subscribe(user => { this.user = user.user; this.isLoading = user.isLoading; });
   }
 
   ngOnInit() {

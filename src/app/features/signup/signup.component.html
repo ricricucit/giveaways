@@ -16,15 +16,16 @@
     <button id="my-logout-button" md-raised-button color="accent" (click)="logout()">Logout</button>
 
     <pre>
+    Status: {{ isLoading }}
     Value: {{ loginForm.value | json }}
-    - - - 
+    - - -
     Validation LOGIN: {{ loginForm.status }}
     </pre>
 
   </md-tab>
 
-  <md-tab [label]="(user.userId && user.userId!==0) ? editLabel : signUpLabel">
 
+  <md-tab [label]="(user.userId && user.userId!==0) ? editLabel : signUpLabel">
     <form [formGroup]="registerForm" (ngSubmit)="signIn('register')" autocomplete="off">
       <md-input-container>
         <input md-input formControlName="firstName" [placeholder]="nameLabel" [(ngModel)]="user.firstName"/><br>
@@ -49,8 +50,9 @@
     <button id="my-logout-button" md-raised-button color="accent" (click)="logout()">Logout</button>
 
     <pre>
+    Status: {{ isLoading }}
     Value: {{ registerForm.value | json }}
-    - - - 
+    - - -
     Validation REGISTER: {{ registerForm.status }}
     </pre>
 
