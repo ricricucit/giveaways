@@ -11,5 +11,5 @@ export interface User {
   readonly password?: string;
   readonly image?: string;         // avatar
   readonly options?: Object;       // user options (lang, timezone, etc.)
-  readonly ts: number;            // timestamp
+  readonly ts: string;            // timestamp
 }

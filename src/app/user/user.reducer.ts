@@ -4,10 +4,14 @@ import { Action } from '@ngrx/store';
 import { UserActions } from './user.actions';
 import { User } from './user.model';
 
+import * as moment from 'moment';
+
 export interface UserState {
   user: User;
   isLoading: boolean;
 };
+
+let today: string = moment().format();
 
 export const initialState: UserState = {
 
@@ -24,7 +28,7 @@ export const initialState: UserState = {
           image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=USER&w=150&h=150',
           options: '{}',
           password: '',
-          ts: 0
+          ts: today
         },
   isLoading: false
 };
